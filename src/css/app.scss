@@ -1,0 +1,22 @@
+// app global css in SCSS form
+@mixin theme($theme: $light-page) {
+  background: $theme
+}
+
+.body--light {
+  @include theme($light-page);
+  .content {
+    @include theme($light);
+  }
+}
+
+.body--dark {
+  @include theme($dark-page);
+  .content {
+    @include theme($dark);
+  }
+}
+
+.input-component {
+  margin-bottom: 10px;
+}
