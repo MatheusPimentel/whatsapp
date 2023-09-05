@@ -13,6 +13,7 @@
           v-bind="field.attrs"
           :fieldsProp="field.provide.fields"
           :classConfigProp="field.provide.classConfig"
+          :hooksProps="field.provide.hooks"
         />
         <component
           v-else-if="field.attrs && field.attrs.html"
@@ -39,6 +40,7 @@
                 v-bind="parseFieldAttrs(fieldChildren)"
                 :fieldsProp="fieldChildren.fields"
                 :classConfigProp="fieldChildren.classConfig"
+                :hooksProps="fieldChildren.hooks"
               />
             </template>
           </div>
@@ -51,12 +53,14 @@
 <script>
 import { defineComponent } from 'vue'
 import Form from 'src/prototype/contracts/Form'
+import Hook from 'src/prototype/contracts/Hook'
 
 export default defineComponent({
   name: 'prototype',
   inject: [
     'fields',
-    'classConfig'
+    'classConfig',
+    'hooks'
   ],
   props: {
     fieldsProp: {
@@ -66,9 +70,13 @@ export default defineComponent({
     classConfigProp: {
       type: Function,
       default: null
+    },
+    hooksProps: {
+      type: Function,
+      default: null
     }
   },
-  mixins: [ Form ],
+  mixins: [ Form, Hook ],
   data: () => ({
     record: {},
     components: {}
@@ -82,6 +90,9 @@ export default defineComponent({
     },
     getClassConfig () {
       return this.classConfigProp ? this.classConfigProp() : (this.classConfig() ? this.classConfig() : {})
+    },
+    getHooks () {
+      return this.hooksProps ? this.hooksProps() : this.hooks()
     }
   },
   created () {

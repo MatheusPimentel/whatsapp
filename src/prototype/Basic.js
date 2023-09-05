@@ -25,6 +25,7 @@ export default class Basic {
    */
   constructor () {
     this.__fields = {}
+    this.__hooks = {}
 
     try {
       this.init()
@@ -49,6 +50,13 @@ export default class Basic {
    */
   fields () {
     return this.__fields
+  }
+
+  /**
+   * @returns {Object}
+   */
+  hooks () {
+    return this.__hooks
   }
 
   classConfig () {

@@ -26,6 +26,7 @@
 
 <script>
 import { defineComponent } from 'vue'
+import { getDarkMode } from 'src/util/darkMode'
 
 export default defineComponent({
   name: 'AppButton',
@@ -62,7 +63,7 @@ export default defineComponent({
   },
   computed: {
     getOutlined () {
-      return this.$q.dark.isActive ? true : this.outlined
+      return getDarkMode() ? true : this.outlined
     }
   }
 })

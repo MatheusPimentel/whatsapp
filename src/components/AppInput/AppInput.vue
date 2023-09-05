@@ -6,7 +6,7 @@
     :label="label"
     :rules="rules"
     :type="type"
-    @update:modelValue="input"
+    @update:model-value="input"
   />
 </template>
 

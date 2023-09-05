@@ -19,6 +19,14 @@ export default class Skeleton extends Basic {
     return this
   }
 
+  /**
+   * @returns {Object}
+   */
+  hook (name, handler) {
+    this.__hooks[name] = handler
+    return this
+  }
+
   getCurrentField () {
     return this.__fields[this.__currentField]
   }
@@ -29,7 +37,8 @@ export default class Skeleton extends Basic {
   provide () {
     return {
       fields: () => this.fields(),
-      classConfig: () => this.classConfig()
+      classConfig: () => this.classConfig(),
+      hooks: () => this.hooks()
     }
   }
 }

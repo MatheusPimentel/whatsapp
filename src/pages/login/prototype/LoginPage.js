@@ -55,5 +55,9 @@ export default class LoginPage extends Prototype {
           marginLeft: '10px'
         }
       })
+
+    this.hook('created', function() {
+      alert('Login Page')
+    })
   }
 }

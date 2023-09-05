@@ -46,5 +46,9 @@ export default class Login extends Prototype {
       .fieldOn('input', function ({ $event }) {
         setDarkMode($event)
       } )
+
+    this.hook('created', function() {
+      alert('Login')
+    })
   }
 }

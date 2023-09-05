@@ -36,4 +36,59 @@ describe('AppInput', () => {
 
     expect(input.componentVM.modelValue).toEqual('test')
   })
+
+  it('can check the label content', () => {
+    const wrapper = mount(AppInput, {
+      propsData: {
+        label: 'test'
+      }
+    })
+    const input = wrapper.findComponent(QInput)
+
+    expect(input.componentVM.label).toEqual('test')
+  })
+
+  it('can check the outlined content', () => {
+    const wrapper = mount(AppInput, {
+      propsData: {
+        outlined: true
+      }
+    })
+    const input = wrapper.findComponent(QInput)
+
+    expect(input.componentVM.outlined).toEqual(true)
+  })
+
+  it('can check the rules content equal string', () => {
+    const wrapper = mount(AppInput, {
+      propsData: {
+        rules: [ false || 'false check']
+      }
+    })
+    const input = wrapper.findComponent(QInput)
+
+    expect(input.componentVM.rules[0]).toEqual('false check')
+  })
+
+  it('can check the rules content equal true', () => {
+    const wrapper = mount(AppInput, {
+      propsData: {
+        rules: [ true || 'false check']
+      }
+    })
+    const input = wrapper.findComponent(QInput)
+
+    expect(input.componentVM.rules[0]).toEqual(true)
+  })
+
+  it('can check the type content', () => {
+    const wrapper = mount(AppInput, {
+      propsData: {
+        type: 'password'
+      }
+    })
+    const input = wrapper.findComponent(QInput)
+
+    expect(input.componentVM.type).toEqual('password')
+  })
 })
