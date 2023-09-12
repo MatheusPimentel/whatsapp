@@ -1,6 +1,7 @@
 import Prototype from 'src/prototype/Prototype'
 import { lang } from 'src/util/lang'
 import { attrsEmail, attrsPassword } from 'pages/login/helper'
+import { checkLoginState, login } from 'src/util/facebook'
 
 /**
  * @type {LoginPage}
@@ -43,6 +44,9 @@ export default class LoginPage extends Prototype {
           background: '#3B5998'
         }
       })
+      .fieldOn('click', function() {
+        login.call(this)
+      })
 
     this.field('btnGmail')
       .fieldIsButton({
@@ -57,7 +61,7 @@ export default class LoginPage extends Prototype {
       })
 
     this.hook('created', function() {
-      alert('Login Page')
+      checkLoginState.call(this)
     })
   }
 }
