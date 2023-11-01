@@ -8,6 +8,18 @@ import AppButton from 'src/components/AppButton/AppButton.vue'
 installQuasarPlugin();
 
 describe('AppButton', () => {
+  window.app = {
+    config: {
+      globalProperties: {
+        $q: {
+          dark: {
+            isActive: false
+          }
+        }
+      }
+    }
+  }
+
   it('has props', () => {
     const wrapper = mount(AppButton, {
       propsData: {

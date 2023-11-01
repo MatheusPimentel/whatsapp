@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 import { installQuasarPlugin } from '@quasar/quasar-app-extension-testing-unit-jest'
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { QInput } from 'quasar'
 import AppInput from 'src/components/AppInput/AppInput.vue'
 

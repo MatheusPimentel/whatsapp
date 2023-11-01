@@ -1,11 +1,11 @@
-import { describe, expect, it } from "@jest/globals";
-import { installQuasarPlugin } from "@quasar/quasar-app-extension-testing-unit-jest";
-import { mount, shallowMount } from "@vue/test-utils";
-import { QIcon } from "quasar";
-import AppIcon from "src/components/AppIcon/AppIcon.vue";
+import { describe, expect, it } from '@jest/globals'
+import { installQuasarPlugin } from '@quasar/quasar-app-extension-testing-unit-jest'
+import { mount, shallowMount } from '@vue/test-utils'
+import { QIcon } from 'quasar'
+import AppIcon from 'src/components/AppIcon/AppIcon.vue'
 
 // Specify here Quasar config you'll need to test your component
-installQuasarPlugin();
+installQuasarPlugin()
 
 describe('AppIcon', () => {
   it('has props', () => {
