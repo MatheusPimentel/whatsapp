@@ -5,8 +5,9 @@ import field from 'src/prototype/config/field'
  */
 export default class Skeleton extends Basic {
   /**
-   * @param {String} name
-   * @param {Object} attr
+   * @param name
+   * @param attr
+   * @returns {Skeleton}
    */
   field (name, attr = {}) {
     const is = this.is
@@ -20,7 +21,20 @@ export default class Skeleton extends Basic {
   }
 
   /**
-   * @returns {Object}
+   * @param layout
+   * @returns {Skeleton}
+   */
+  setLayout (layout) {
+    const name = this.__currentField
+    const field = this.__fields[name]
+    this.__fields[name].layout = Object.assign(field.layout, layout)
+    return this
+  }
+
+  /**
+   * @param name
+   * @param handler
+   * @returns {Skeleton}
    */
   hook (name, handler) {
     this.__hooks[name] = handler

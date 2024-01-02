@@ -9,5 +9,8 @@ export default (name, is = '', attrs = {}, on = {}) => ({
   $key: name,
   is,
   attrs,
-  on
+  on,
+  layout: {
+    fieldHidden: false
+  }
 })

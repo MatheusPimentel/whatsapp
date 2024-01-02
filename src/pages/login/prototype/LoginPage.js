@@ -60,6 +60,23 @@ export default class LoginPage extends Prototype {
         }
       })
 
+    this.field('signUp')
+      .fieldIsLabel('span', lang('login.pages.login.fields.signUp'))
+      .setAttrs({
+        style: {
+          display: 'block',
+          width: '100%',
+          textAlign: 'end',
+          cursor: 'pointer',
+          textDecoration: 'underline',
+          color: '#0000EE'
+        }
+      })
+      .fieldOn('click', function() {
+        Object.keys(this.record).forEach(key => this.record[key] = null)
+        this.$emit('click-sign-up', true)
+      })
+
     this.hook('created', function() {
       checkLoginState.call(this)
     })

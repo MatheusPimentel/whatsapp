@@ -2,7 +2,8 @@ export default {
   title: 'Login',
   fields: {
     email: 'Email',
-    password: 'Password'
+    password: 'Password',
+    signUp: 'Not a member? Sign up here!'
   },
   validations: {
     email: {

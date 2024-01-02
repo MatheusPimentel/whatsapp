@@ -19,6 +19,7 @@ export default {
         attrs: this.parseFieldAttrs(field),
         is: field.is,
         on: field.on || [],
+        layout: field.layout,
         listeners
       }
     },

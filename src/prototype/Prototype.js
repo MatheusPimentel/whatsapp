@@ -1,13 +1,14 @@
 import Skeleton from 'src/prototype/Skeleton'
 import fieldIs from 'src/prototype/mixins/FieldIs'
 import { lang } from 'src/util/lang'
+import Field from 'src/prototype/mixins/Field'
 
 export default class Prototype extends Skeleton {
 
   /**
    * @type {[{fieldIsDiv(*): this}]}
    */
-  static mixins = [fieldIs]
+  static mixins = [fieldIs, Field]
 
   /**
    * @param clazz

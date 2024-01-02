@@ -2,6 +2,7 @@ import Prototype from 'src/prototype/Prototype'
 import LoginPage from 'pages/login/prototype/LoginPage'
 import { lang } from 'src/util/lang'
 import { getDarkMode, setDarkMode } from 'src/util/darkMode'
+import SignUpPage from 'pages/signUp/prototype/SignUpPage'
 
 export default class Login extends Prototype {
 
@@ -36,6 +37,20 @@ export default class Login extends Prototype {
       .fieldIsForm()
       .fieldClasses('col-xs-12 col-sm-6 col-md-6')
       .fieldChildrens(LoginPage.build().provide())
+      .fieldOn('click-sign-up', function() {
+        this.setFieldLayout('formLogin', 'fieldHidden', true)
+        this.setFieldLayout('formSignUp', 'fieldHidden', false)
+      })
+
+    this.field('formSignUp')
+      .fieldIsForm()
+      .fieldHidden()
+      .fieldClasses('col-xs-12 col-sm-6 col-md-6')
+      .fieldChildrens(SignUpPage.build().provide())
+      .fieldOn('click-sign-in', function() {
+        this.setFieldLayout('formLogin', 'fieldHidden', false)
+        this.setFieldLayout('formSignUp', 'fieldHidden', true)
+      })
 
     this.field('darkMode')
       .fieldIsToogle({

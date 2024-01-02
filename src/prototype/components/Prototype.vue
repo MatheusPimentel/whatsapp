@@ -16,7 +16,7 @@
           :hooksProps="field.provide.hooks"
         />
         <component
-          v-else-if="field.attrs && field.attrs.html"
+          v-else-if="field.attrs && field.attrs.html && !field.layout.fieldHidden"
           :is="field.is"
           v-on="field.listeners"
           v-bind="field.attrs"
@@ -25,7 +25,7 @@
           {{ field.attrs.html }}
         </component>
         <component
-          v-else
+          v-else-if="!field.layout.fieldHidden"
           :is="field.is"
           v-bind="field.attrs"
           v-on="field.listeners"
@@ -41,6 +41,7 @@
                 :fieldsProp="fieldChildren.fields"
                 :classConfigProp="fieldChildren.classConfig"
                 :hooksProps="fieldChildren.hooks"
+                v-on="field.listeners"
               />
             </template>
           </div>
@@ -54,6 +55,7 @@
 import { defineComponent } from 'vue'
 import Form from 'src/prototype/contracts/Form'
 import Hook from 'src/prototype/contracts/Hook'
+import SetField from 'src/prototype/contracts/SetField'
 
 export default defineComponent({
   name: 'prototype',
@@ -76,7 +78,7 @@ export default defineComponent({
       default: null
     }
   },
-  mixins: [ Form, Hook ],
+  mixins: [ Form, Hook, SetField ],
   data: () => ({
     record: {},
     components: {}
